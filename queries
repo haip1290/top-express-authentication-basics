@@ -1,0 +1,1 @@
+create table users (id int primary key generated always as identity, username varchar(255), password varchar(255));
