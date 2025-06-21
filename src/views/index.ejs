@@ -1,16 +1,28 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Home</title>
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <a href="/sign-up">Sign Up</a>
-  </body>
+</head>
+<body>
+<h1><%= title; %></h1>
+<a href="/sign-up">Sign Up</a>
+<h4>Please log in</h4>
+<form action="/log-in" method="post">
+    <label for="username">Username: </label>
+    <input type="text" id="username" name="username" />
+    <label for="password">Password: </label>
+    <input type="password" id="password" name="password" />
+    <button type="submit">Log In</button>
+</form>
+<% if(locals.currentUser) { %>
+    <p>Logged in as <%= currentUser.username %></p>
+<% } %>
+<p></p>
+</body>
 </html>

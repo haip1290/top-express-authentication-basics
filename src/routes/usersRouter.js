@@ -1,20 +1,13 @@
 const { Router } = require('express');
 
 const usersRouter = Router();
-const usersQueries = require('../db/queries');
+const usersController = require('../controllers/usersController');
 
-usersRouter.get('/', (req, res) => {
-  res.render('index', { title: 'Hello World' });
-});
-
-usersRouter.get('/sign-up', (req, res) => {
-  res.render('sign-up', { title: 'Sign Up' });
-});
-
-usersRouter.post('/sign-up', async (req, res) => {
-  const { username, password } = req.body;
-  await usersQueries.createUser({ username, password });
-  res.redirect('/');
-});
+usersRouter.get('/', usersController.index);
+usersRouter.get('/sign-up', usersController.signUp);
+usersRouter.post('/sign-up', usersController.createUser);
+usersRouter.post('/log-in', usersController.login);
+usersRouter.get('/info', usersController.info);
+usersRouter.get('/log-out', usersController.logOut);
 
 module.exports = usersRouter;
